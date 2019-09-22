@@ -5,8 +5,6 @@ from dqn.model import DQN
 from dqn.replay_buffer import ReplayBuffer
 
 device = "cuda"
-
-
 class DQNAgent:
     def __init__(self,
                  observation_space: spaces.Box,

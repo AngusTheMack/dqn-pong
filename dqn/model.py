@@ -9,9 +9,7 @@ class DQN(nn.Module):
     Nature DQN paper.
     """
 
-    def __init__(self,
-                 observation_space: spaces.Box,
-                 action_space: spaces.Discrete):
+    def __init__(self, observation_space: spaces.Box, action_space: spaces.Discrete):
         """
         Initialise the DQN
         :param observation_space: the state space of the environment

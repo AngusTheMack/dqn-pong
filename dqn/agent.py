@@ -4,6 +4,8 @@ import numpy as np
 from dqn.model import DQN
 from dqn.replay_buffer import ReplayBuffer
 
+import torch
+
 device = "cuda"
 class DQNAgent:
     def __init__(self,
@@ -32,8 +34,7 @@ class DQNAgent:
         self.target_network = DQN(observation_space, action_space).to(device)
         self.update_target_network()
         self.target_network.eval()
-        self.optimiser =  # TODO Initialise Pytorch/Tensorflow optimiser with learning rate and policy_network.parameters()
-
+        self.optimiser = torch.optim.Adam(self.policy_network.parameters(), lr=lr)
     def optimise_td_loss(self):
         """
         Optimise the TD-error over a single minibatch of transitions

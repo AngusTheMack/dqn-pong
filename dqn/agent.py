@@ -9,15 +9,19 @@ from dqn.model import DQN
 from dqn.replay_buffer import ReplayBuffer
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
 class DQNAgent:
-    def __init__(self,
-                 observation_space: spaces.Box,
-                 action_space: spaces.Discrete,
-                 replay_buffer: ReplayBuffer,
-                 use_double_dqn,
-                 lr,
-                 batch_size,
-                 gamma):
+    def __init__(
+        self,
+        observation_space: spaces.Box,
+        action_space: spaces.Discrete,
+        replay_buffer: ReplayBuffer,
+        use_double_dqn,
+        lr,
+        batch_size,
+        gamma,
+    ):
         """
         Initialise the DQN algorithm using the Adam optimiser
         :param action_space: the action space of the environment
@@ -37,6 +41,7 @@ class DQNAgent:
         self.update_target_network()
         self.target_network.eval()
         self.optimiser = torch.optim.Adam(self.policy_network.parameters(), lr=lr)
+
     def optimise_td_loss(self):
         """
         Optimise the TD-error over a single minibatch of transitions

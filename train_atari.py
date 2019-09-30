@@ -5,7 +5,8 @@ import torch
 from dqn.agent import DQNAgent
 from dqn.replay_buffer import ReplayBuffer
 from dqn.wrappers import *
-if __name__ == '__main__':
+
+if __name__ == "__main__":
 
     hyper_params = {
         "seed": 42,  # which seed to use
@@ -22,7 +23,7 @@ if __name__ == '__main__':
         "eps-start": 1.0,  # e-greedy start threshold
         "eps-end": 0.01,  # e-greedy end threshold
         "eps-fraction": 0.1,  # fraction of num-steps
-        "print-freq": 10
+        "print-freq": 10,
     }
 
     np.random.seed(hyper_params["seed"])
@@ -41,21 +42,19 @@ if __name__ == '__main__':
     env = ClipRewardEnv(env)
     env = FrameStack(env, 4)
     env = gym.wrappers.Monitor(
-            env=env,
-            directory="./vids/",
-            video_callable=lambda episode_id: episode_id % 100 == 0,
-            force = True)
+        env=env, directory="./vids/", video_callable=lambda episode_id: episode_id % 100 == 0, force=True
+    )
     replay_buffer = ReplayBuffer(hyper_params["replay-buffer-size"])
 
     agent = DQNAgent(
-            env.observation_space,
-            env.action_space,
-            replay_buffer,
-            use_double_dqn=hyper_params['use-double-dqn'],
-            lr=hyper_params['learning-rate'],
-            batch_size=hyper_params['batch-size'],
-            gamma=hyper_params['discount-factor']
-        )
+        env.observation_space,
+        env.action_space,
+        replay_buffer,
+        use_double_dqn=hyper_params["use-double-dqn"],
+        lr=hyper_params["learning-rate"],
+        batch_size=hyper_params["batch-size"],
+        gamma=hyper_params["discount-factor"],
+    )
 
     eps_timesteps = hyper_params["eps-fraction"] * float(hyper_params["num-steps"])
     episode_rewards = [0.0]
@@ -85,8 +84,7 @@ if __name__ == '__main__':
 
         num_episodes = len(episode_rewards)
 
-        if done and hyper_params["print-freq"] is not None and len(episode_rewards) % hyper_params[
-            "print-freq"] == 0:
+        if done and hyper_params["print-freq"] is not None and len(episode_rewards) % hyper_params["print-freq"] == 0:
             mean_100ep_reward = round(np.mean(episode_rewards[-101:-1]), 1)
             print("********************************************************")
             print("steps: {}".format(t))
@@ -94,5 +92,5 @@ if __name__ == '__main__':
             print("mean 100 episode reward: {}".format(mean_100ep_reward))
             print("% time spent exploring: {}".format(int(100 * eps_threshold)))
             print("********************************************************")
-            torch.save(agent.policy_network.state_dict(),"./checkpoints/checkpoint.pth")
-            np.savetxt('rewards.csv',episode_rewards,delimiter=',')
+            torch.save(agent.policy_network.state_dict(), "./checkpoints/checkpoint.pth")
+            np.savetxt("rewards.csv", episode_rewards, delimiter=",")

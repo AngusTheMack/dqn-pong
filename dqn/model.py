@@ -1,12 +1,11 @@
-
 import torch.nn as nn
 import torch.nn.functional as F
 from gym import spaces
 
-# Class inheritance example with Pytorch, can use Tensorflow instead.
+
 class DQN(nn.Module):
     """
-    A basic implementation of a Deep Q-Network. The architecture is the same as that described in the
+    A basic implementation of a Deep Q-Network. The architecture is as described in the
     Nature DQN paper.
     """
 
@@ -17,9 +16,9 @@ class DQN(nn.Module):
         :param action_space: the action space of the environment
         """
         super().__init__()
-        assert type(observation_space) == spaces.Box, 'observation_space must be of type Box'
-        assert len(observation_space.shape) == 3, 'observation space must have the form channels x width x height'
-        assert type(action_space) == spaces.Discrete, 'action_space must be of type Discrete'
+        assert type(observation_space) == spaces.Box, "observation_space must be of type Box"
+        assert len(observation_space.shape) == 3, "observation space must have the form channels x width x height"
+        assert type(action_space) == spaces.Discrete, "action_space must be of type Discrete"
 
         self.conv1 = nn.Conv2d(observation_space.shape[0], 32, 8, stride=4)
         self.conv2 = nn.Conv2d(32, 64, 4, stride=2)

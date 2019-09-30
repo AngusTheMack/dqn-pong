@@ -79,7 +79,7 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 
 \begin{document}
 \title{COMS4047A DQN Project}
-\author{Angus Mackenzie}
+\author{Angus Mackenzie - 1106817}
 \date{\today} 
 \maketitle 
 %\thispagestyle{empty}
@@ -92,12 +92,18 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 %\newpage
 \pagenumbering{arabic}
 \section{Introduction}
-This lab explores the implementation of a Deep Q-Learning (DQN) agent to play pong through the use of OpenAI \cite{openai}. Initial course provided source code acted as the base, and then a solution was built on top to the specification of \cite{Deepmind} and \cite{NaturePaper}.
+This lab explores the implementation of a Deep Q-Learning (DQN) agent to play pong through the use of OpenAI \cite{openai}. Initially we were provided source code, which acted as the base, and then a solution was built on top to the specification of \cite{Deepmind} and \cite{NaturePaper}.
 
 \section{Method}
+A model was created in order to train the DQN, this model used the same architecture as that of \cite{NaturePaper}. This network takes in an input of 4 frames as the state representation, and then has an output for each possible action. 
 
+The model was then trained for 1 million steps, and the rewards for every 100 steps tracked. The model was also saved every 100 steps. 
 
+\section{Results}
 
+\includegraphics{../submission/plot.png}H
+
+As shown above, the model started learning slowly, with initial rewards per episode beginning around -20. After training for roughly 2 hours the model increases the reward per episode to roughly 20.
 
 
 %\bibliographystyle{apalike} I prefer plain references, but I will ask Hairong if that is okay

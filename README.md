@@ -1,3 +1,15 @@
+# Deep Q-Network
+Angus Mackenzie - 1106817
+In this lab I implemented a Deep Q-Learning (DQN) agent to play pong. Some source code was supplied, and alterations were made in order to achieve a working model.
+
+The 
+* Method used
+* Network Architecture
+* Results
+![Final](submission/final_vid.gif)
+
+![Graph](submission/plot.png)
+
 # Reinforcement Learning - Deep-Q Network
 * Implementing Deep Q-Learning agent to play Pong.
 * Refer to the following in order to understand the implementation:

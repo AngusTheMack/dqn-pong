@@ -1,3 +1,4 @@
+![DQN_PONG](dqnpong.png)
 # Reinforcement Learning - Deep-Q Network
 * Implementing Deep Q-Learning agent to play Pong.
 * Refer to the following in order to understand the implementation:

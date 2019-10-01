@@ -8,6 +8,10 @@ Here is the final agent, which seems to lose the first point in order to put the
 
 ![Final](submission/final_vid.gif)
 
+However, 20 episodes before at 500 - the    agent competes with the game without losing a single point.
+
+![Final](500eps.gif)
+
 As shown by the graph below, the agent starts very slowly with a reward of -20 and eventually gets reasonably consistent rewards of 20:
 
 ![Graph](submission/plot.png)

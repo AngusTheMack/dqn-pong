@@ -95,7 +95,7 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 This lab explores the implementation of a Deep Q-Learning (DQN) agent to play pong through the use of OpenAI \cite{openai}. Initially we were provided source code, which acted as the base, and then a solution was built on top to the specification of \cite{Deepmind} and \cite{NaturePaper}.
 
 \section{Method}
-A model was created in order to train the DQN, this model used the same architecture as that of \cite{NaturePaper}. This network takes in an input of 4 frames as the state representation, and then has an output for each possible action. 
+A model was created in order to train the DQN, this model used the same architecture as that of \cite{NaturePaper}. This network takes in an input of 4 frames of 84x84 pixels each as the state representation, and then has an output for each possible action. The first layer of the network has a stride of 4, and an input of 16 8x8 filters. The second layer has an input of 32 with a stride of 2 and 4x4 filters. The Third layer has an input of 64, and a filter of 3x3 with a stride of 1. The output is simply the fully connected linear layer that has an output for each action. 
 
 The model was then trained for 1 million steps, and the rewards for every 100 steps tracked. The model was also saved every 100 steps. 
 
